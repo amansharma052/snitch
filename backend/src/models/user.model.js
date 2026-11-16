@@ -20,11 +20,11 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    // role: {
-    //     type: String,
-    //     enum: ["buyer", "seller"],
-    //     default: "buyer"
-    // }
+    role: {
+        type: String,
+        enum: ["buyer", "seller"],
+        default: "buyer"
+    }
 })
 
 userSchema.pre("save", async function () {
