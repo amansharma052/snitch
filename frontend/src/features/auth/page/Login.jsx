@@ -72,8 +72,8 @@ const Login = () => {
     } catch (err) {
       setLocalError(
         err.response?.data?.message ||
-          err.message ||
-          "Unable to log in. Please check your credentials."
+        err.message ||
+        "Unable to log in. Please check your credentials."
       );
     } finally {
       setIsSubmitting(false);
@@ -195,11 +195,10 @@ const Login = () => {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="name@example.com"
-                className={`w-full h-12 px-4 bg-neutral-50 text-black text-sm border transition-colors outline-none focus:bg-white ${
-                  formErrors.email
+                className={`w-full h-12 px-4 bg-neutral-50 text-black text-sm border transition-colors outline-none focus:bg-white ${formErrors.email
                     ? "border-red-500"
                     : "border-neutral-300 focus:border-black"
-                }`}
+                  }`}
               />
               {formErrors.email && (
                 <p className="mt-1.5 text-xs text-red-600 font-medium">
@@ -238,11 +237,10 @@ const Login = () => {
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="Enter your password"
-                  className={`w-full h-12 pl-4 pr-12 bg-neutral-50 text-black text-sm border transition-colors outline-none focus:bg-white ${
-                    formErrors.password
+                  className={`w-full h-12 pl-4 pr-12 bg-neutral-50 text-black text-sm border transition-colors outline-none focus:bg-white ${formErrors.password
                       ? "border-red-500"
                       : "border-neutral-300 focus:border-black"
-                  }`}
+                    }`}
                 />
                 <button
                   type="button"
@@ -272,6 +270,18 @@ const Login = () => {
                 <span>Remember me on this device</span>
               </label>
             </div>
+            <div className="relative my-6">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-neutral-200"></div>
+              </div>
+              <div className="relative flex justify-center text-xs">
+                <span className="bg-white px-3 text-neutral-400 uppercase tracking-wider">
+                  Or continue with
+                </span>
+              </div>
+            </div>
+
+        <a href="/api/auth/google">continue with google</a>
 
             {/* Submit Button */}
             <button
