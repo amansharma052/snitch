@@ -1,6 +1,7 @@
 import { createBrowserRouter, Navigate } from "react-router";
 import Register from "../features/auth/page/Register";
 import Login from "../features/auth/page/Login";
+import CreateProduct from "../features/products/pages/CreateProduct";
 
 export const routes = createBrowserRouter([
   {
@@ -14,5 +15,9 @@ export const routes = createBrowserRouter([
   {
     path: "/login",
     element: <Login />,
+  },
+  {
+    path: "/seller/create-product",
+    element: <CreateProduct />
   },
 ]);
