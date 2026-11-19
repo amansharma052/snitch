@@ -28,6 +28,7 @@ const Login = () => {
       ...prev,
       [name]: type === "checkbox" ? checked : value,
     }));
+    
     // Clear field-specific error when user types
     if (formErrors[name]) {
       setFormErrors((prev) => ({ ...prev, [name]: "" }));
