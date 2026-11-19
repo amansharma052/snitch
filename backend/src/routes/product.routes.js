@@ -1,5 +1,5 @@
 import express from "express"
-import { authenticateSeller } from "../middlewares/auth.middlewares.js"
+import { authenticateSeller } from '../middlewares/auth.middleware.js';
 import multer from "multer"
 import { createProduct,getSellerProducts} from "../controllers/product.controller.js"
 import { createProductValidator } from '../validator/product.validator.js';

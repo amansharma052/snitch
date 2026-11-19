@@ -1,26 +1,37 @@
-import { Router } from "express"
-import { validateLoginUser, validateRegisterUser } from "../validator/auth.validator.js"
-import { login, register } from "../controllers/auth.controller.js"
+import { Router } from "express";
+import { validateRegisterUser, validateLoginUser } from "../validator/auth.validator.js";
+import { getMe, googleCallback, login, register } from "../controllers/auth.controller.js";
 import passport from "passport";
 import { config } from "../config/config.js";
-const authRouter = Router()
+import { authenticateUser } from "../middlewares/auth.middleware.js";
 
-authRouter.post("/register", validateRegisterUser, register)
+const router = Router();
 
-authRouter.post("/login", validateLoginUser, login)
+
+
+router.post('/register', validateRegisterUser, register)
+
+router.post("/login", validateLoginUser, login)
+
 
 // /api/auth/google
-authRouter.get("/google",
-    passport.authenticate("google", { scope: ["profile", "email"] }))
+router.get("/google",
+    passport.authenticate("google", { scope: [ "profile", "email" ] }))
 
-authRouter.get("/google/callback",
+router.get("/google/callback",
     passport.authenticate("google", {
         session: false,
-        // googleCallback
-
+        failureRedirect: config.NODE_ENV == "development" ? "http://localhost:5173/login" : "/login"
     }),
-
+    // googleCallback,
 )
 
 
-export default authRouter
+/**
+ * @route GET /api/auth/me
+ * @description Get the authenticated user's profile
+ * @access Private
+ */
+router.get('/me', authenticateUser, getMe)
+
+export default router;

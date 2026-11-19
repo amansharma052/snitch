@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { useNavigate } from 'react-router';
-import { useProduct } from '../hook/useProduct.js';
+import { useProduct } from '../hook/useProduct';
 
 const CURRENCIES = ['INR', 'USD', 'EUR', 'GBP'];
 const MAX_IMAGES = 7;
