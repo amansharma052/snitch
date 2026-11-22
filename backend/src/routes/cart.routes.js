@@ -1,7 +1,7 @@
 import express from "express"
 import {authenticateUser} from "../middlewares/auth.middleware.js"
-import { validateAddToCart } from "../validator/cart.validator.js"
-import { addToCart,getCart } from "../controllers/cart.controller.js"
+import { validateAddToCart,validateIncrementCartItemQuantity } from "../validator/cart.validator.js"
+import { addToCart,getCart,incrementCartItemQuantity } from "../controllers/cart.controller.js"
 
 
 const router =express.Router()
@@ -9,6 +9,8 @@ const router =express.Router()
 router.post("/add/:productId/:variantId",validateAddToCart,authenticateUser,addToCart)
 
 router.get('/', authenticateUser, getCart)
+
+router.patch("/quantity/increment/:productId/:variantId", authenticateUser, validateIncrementCartItemQuantity, incrementCartItemQuantity)
 
 
 export default router
